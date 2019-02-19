@@ -327,10 +327,14 @@ def guess_header(array, name=''):
     header = {}
 
     if isinstance(array, Sequence) and len(array) == 1:
-        # sequence with only one element, squeeze the array
+        # sequence with only one element, assume user wants cell
         array = array[0]
+        header.update({
+            'mclass': 'mxCELL_CLASS',
+            'dims': (1, len(array))
+        })
 
-    if isinstance(array, basestring):
+    elif isinstance(array, basestring):
         header.update({
             'mclass': 'mxCHAR_CLASS', 'mtp': 'miUTF8',
             'dims': (1 if len(array) > 0 else 0, len(array))})
