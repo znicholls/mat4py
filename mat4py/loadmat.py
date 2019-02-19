@@ -296,9 +296,9 @@ def read_cell_array(fd, endian, header):
             array[row].append(varray)
             # move on to next field
             fd.seek(next_pos)
-    # pack and return the array
-    if header['dims'][0] == 1:
-        return squeeze(array[0])
+    # # pack and return the array
+    # if header['dims'][0] == 1:
+    #     return squeeze(array[0])
     return squeeze(array)
 
 
